@@ -15,6 +15,7 @@ class AlterUsersTable extends Migration
     {
         Schema::table('users', function ($table) {
             $table->integer('admin')->default(0);
+            
         });
     }
 

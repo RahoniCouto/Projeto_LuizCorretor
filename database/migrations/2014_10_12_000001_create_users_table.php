@@ -19,7 +19,21 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status', ['contatar', 'vendido', 'cancelado']);
+            $table->enum('status', ['contatar', 'vendido', 'cancelado'])->default('contatar');
+            
+
+            $table->string('nomeCliente')->nullable();
+            $table->string('sobrenomeCliente')->nullable();
+            $table->string('cpfCliente')->nullable();
+            $table->string('rgCliente')->nullable();
+            $table->string('telCliente')->nullable();
+            $table->string('celCliente')->nullable();
+            $table->string('logradouroEndereco')->nullable();
+            $table->string('bairroEndereco')->nullable();
+            $table->integer('numeroEndereco')->nullable();
+            $table->string('cepEndereco')->nullable();
+            $table->string('cidadeEndereco')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
