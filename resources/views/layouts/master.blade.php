@@ -3,80 +3,81 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>E-CorretoR - @yield('title')</title>
-
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="https://kit.fontawesome.com/a971ea5d03.js" crossorigin="anonymous"></script>
+    <!-- FONTS -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a971ea5d03.js" crossorigin="anonymous"></script>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- CSS -->
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logoSize" src="{{asset('/imagens/Logo.png')}}" alt="">-CorretoR
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+    <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto"></ul>
+                <ul class="navbar-nav ml-auto">
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
+                </ul>
             </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        </div>
+    </nav>
+    <div id="menu-bar">
+        <div id="menu" onclick="onClickMenu()">
+            <div id="bar1" class="bar"></div>
+            <div id="bar2" class="bar1"></div>
+            <div id="bar3" class="bar"></div>
+        </div>
     </div>
+    <div class="row menuOpen">
+        <div class="col-3 nav" id="nav2">
+            <ul class="hamb">
+                <li><a href="#"><span><small>[01]</small>Home</span></a></li>
+                <li><a href="#"><span><small>[02]</small>About</span></a></li>
+                <li><a href="#"><span><small>[03]</small>Services</span></a></li>
+                <li><a href="#"><span><small>[04]</small>Pricing</span></a></li>
+                <li><a href="#"><span><small>[05]</small>Portfolio</span></a></li>
+                <li><a href="#"><span><small>[06]</small>Blog</span></a></li>
+                <li><a href="#"><span><small>[07]</small>Contact</span></a></li>
+            </ul>
+        </div>
+        <div class="col-9 nav" id="nav">
+            <img class="col-12" src="{{ asset('images/bg_2.jpg') }}" alt="">
+        </div>
+    </div>
+    <main class="py-5 test">
+        @yield('content')
+    </main>
 </body>
+
 </html>

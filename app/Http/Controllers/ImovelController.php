@@ -78,7 +78,7 @@ class ImovelController extends Controller {
         $dados=$request->all();
         Imovel::create($dados);
 
-        return redirect('admin.ProdutosAdmin');
+        return redirect()->route('imoveis.index');
     }
 
     /**

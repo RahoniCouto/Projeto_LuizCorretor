@@ -86,7 +86,7 @@ class ClienteController extends Controller
         $dados=$request->all();
         user::create($dados);
 
-        return redirect('admin.clientes');
+        return redirect()->route('clientes.index');
     }
 
     /**
