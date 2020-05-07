@@ -101,3 +101,10 @@ div .hamb {
 
 /**** Slider Menu ****/
 
+.menu-slide {
+  width: 442px;
+  height: calc(100vh - 0);
+  min-height: 600px;
+  position: relative;
+  display: block;
+}

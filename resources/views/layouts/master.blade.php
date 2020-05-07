@@ -15,6 +15,8 @@
     <!-- CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/owl.theme.default.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm">
@@ -75,9 +77,22 @@
             <img class="col-12" src="{{ asset('images/bg_2.jpg') }}" alt="">
         </div>
     </div>
+
+    <div class="home-slider owl-carousel">
+        <div><img class="menu-slide" src="{{ asset('/images/bg_1.jpg') }}" alt=""></div>
+        <div><img class="menu-slide" src="{{ asset('/images/bg_2.jpg') }}" alt=""></div>
+        <div><img class="menu-slide" src="{{ asset('/images/bg_3.jpg') }}" alt=""></div>
+        <div><img class="menu-slide" src="{{ asset('/images/bg_4.jpg') }}" alt=""></div>
+    </div>
+
     <main class="py-5 test">
         @yield('content')
     </main>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/carousel.js') }}"></script>
+
+    
 </body>
 
 </html>
