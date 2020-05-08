@@ -1,5 +1,12 @@
-.logoSize {
-    width: 50px;
+body {
+  margin: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
 }
 
 .border {
@@ -11,7 +18,7 @@
 }
 
 .bottonWhite {
-  color: white;
+  color: white !important;
 }
 
 /* .test {
@@ -28,7 +35,7 @@
 }
 #menu-bar {
   position: fixed;
-  z-index: 100;
+  z-index: 100000;
 }
 .menuOpen{
   background-color: #1b212c;  
@@ -61,16 +68,18 @@
 
 
 .change #bar1 {
+  background-color: white;
   transform: translateY(5px) rotateZ(-45deg);
 }
 .change #bar3 {
+  background-color: white;
   transform: translateY(-7px) rotate(45deg);
 }
 .change #bar2 {
   opacity: 0;
 }
 .hamb li a {
-  color: black;
+  color: white;
   text-decoration: none;
   font-size: 1.5em;
 }
@@ -95,16 +104,36 @@ div .hamb {
 }
 .menuOpen {
   position: fixed;
-  z-index: 99;
-  opacity: 0.8;
+  height: 100%;
+  z-index: 99999;
 }
 
 /**** Slider Menu ****/
 
 .menu-slide {
-  width: 442px;
-  height: calc(100vh - 0);
   min-height: 600px;
   position: relative;
   display: block;
+  background-size: cover;
+  background-position: center;
+}
+
+.Ecorretor {
+  position: absolute;
+  width: 100%;
+  padding-top: 50px;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.Logo {
+  position: relative;
+}
+
+.corretor {
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+
 }

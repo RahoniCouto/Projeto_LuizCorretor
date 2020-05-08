@@ -9,11 +9,11 @@ Auth::routes();
 */
 
 Route::get('/', function () {
-    if(Auth::check()){
+    // if(Auth::check()){
         return view('welcome');
-    } else {
-        return view('auth/login');
-    }
+    // } else {
+    //     return view('auth/login');
+    // }
 });
 
 /*

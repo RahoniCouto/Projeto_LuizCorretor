@@ -78,16 +78,10 @@
         </div>
     </div>
 
-    <div class="home-slider owl-carousel">
-        <div><img class="menu-slide" src="{{ asset('/images/bg_1.jpg') }}" alt=""></div>
-        <div><img class="menu-slide" src="{{ asset('/images/bg_2.jpg') }}" alt=""></div>
-        <div><img class="menu-slide" src="{{ asset('/images/bg_3.jpg') }}" alt=""></div>
-        <div><img class="menu-slide" src="{{ asset('/images/bg_4.jpg') }}" alt=""></div>
-    </div>
-
-    <main class="py-5 test">
+    <main>
         @yield('content')
     </main>
+    
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/carousel.js') }}"></script>
