@@ -32,6 +32,7 @@ $(document).ready(function ($) {
 
     var carousel = function () {
         $('#Carousel-clientes').owlCarousel({
+            rtl:true,
             loop: true,
             items: 1,
             margin: 15,

@@ -357,3 +357,15 @@ div .hamb {
 .produto-image {
   height: 250px;
 }
+
+/**** Fale com o corretor ****/
+
+.contato {
+  min-height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.text-black{
+  color: black!important;
+}

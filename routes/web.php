@@ -22,7 +22,7 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/admin', 'admController@admin')->middleware('require-admin');  
+Route::get('/admin', 'admController@admin')->name('admin')->middleware('require-admin');  
 
 Route::resource('imoveis', 'ImovelController')->middleware('require-admin');
 
@@ -38,7 +38,7 @@ Route::get('/clientes/remover/{id}', 'ClienteController@remover')->name('cliente
 |--------------------------------------------------------------------------
 */
 
-Route::get('/home', 'HomeController@user');
+Route::get('/home', 'guestController@user')->name('home.welcome');
 
   
 

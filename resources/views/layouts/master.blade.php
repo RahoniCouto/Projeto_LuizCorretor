@@ -24,20 +24,25 @@
                 <ul class="navbar-nav ml-auto">
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
                     @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if(Auth::user()->admin == 1)
+                                <a class="dropdown-item" href="{{ route('admin') }}">
+                                    {{ __('Painel Admin') }}
+                                </a>
+                                @endif
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -62,13 +67,12 @@
     <div class="row menuOpen">
         <div class="col-3 nav" id="nav2">
             <ul class="hamb">
-                <li><a href="#"><span><small>[01]</small>Home</span></a></li>
-                <li><a href="#"><span><small>[02]</small>About</span></a></li>
+                <li><a href="{{ route('home.welcome') }}"><span><small>[01]</small>Home</span></a></li>
+                <li><a href="#"><span><small>[02]</small>Catalogo</span></a></li>
                 <li><a href="#"><span><small>[03]</small>Services</span></a></li>
                 <li><a href="#"><span><small>[04]</small>Pricing</span></a></li>
                 <li><a href="#"><span><small>[05]</small>Portfolio</span></a></li>
                 <li><a href="#"><span><small>[06]</small>Blog</span></a></li>
-                <li><a href="#"><span><small>[07]</small>Contact</span></a></li>
             </ul>
         </div>
         <div class="col-9 nav" id="nav">
@@ -82,7 +86,7 @@
 
     <footer class="bg-dark">
         <div class="container">
-            <div class="row mb-5 justify-content-center">
+            <div class="row justify-content-center">
                 <div class="col-md-5 text-center">
                     <div class="ftco-footer-widget mb-3">
                         <ul class="ftco-footer-social list-unstyled">
@@ -92,7 +96,7 @@
                         </ul>
                     </div>
                     <div class="ftco-footer-widget">
-                        <h2 class="mb-3">Contact Us</h2>
+                        <h2 class="mb-3 text-white">Contact Us</h2>
                         <p class="email"><a href="#">info@email.com</a></p>
                     </div>
                 </div>
