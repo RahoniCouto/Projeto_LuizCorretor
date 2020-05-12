@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="row menuOpen">
-        <div class="col-3 nav" id="nav2">
+        <div class="col-3 nav1" id="nav2">
             <ul class="hamb">
                 <li><a href="{{ route('home.welcome') }}"><span><small>[01]</small>Home</span></a></li>
                 <li><a href="#"><span><small>[02]</small>Catalogo</span></a></li>
@@ -75,7 +75,7 @@
                 <li><a href="#"><span><small>[06]</small>Blog</span></a></li>
             </ul>
         </div>
-        <div class="col-9 nav" id="nav">
+        <div class="col-9 nav1" id="nav1">
             <img class="col-12" src="{{ asset('images/bg_2.jpg') }}" alt="">
         </div>
     </div>

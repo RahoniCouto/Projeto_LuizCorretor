@@ -8,6 +8,12 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 
 class ImovelController extends Controller {
+
+    public function __construct()
+    {
+        $this->middleware('require-admin');
+    }
+
     protected function validarImovel($request) {
         $validator=Validator::make($request->all(), [ "nomeEmp"=> "required",
                 "descricao"=> "required",

@@ -8,6 +8,11 @@ use \App\User;
 
 class admController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('require-admin');
+    }
+
     public function admin () {
         $imoveis = Imovel::all();
         $users = User::all();

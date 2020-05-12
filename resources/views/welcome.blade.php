@@ -82,14 +82,14 @@
 
 
         <div id="produtos-carousel" class="card-group owl-carousel">
-            <div class="card text-center bg-light h-100">
+            <div class="card border-secondary text-center bg-light h-100">
                 <img src="{{ asset('images/bg_1.jpg') }}" class="card-img-top produto-image" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title border-secondary">Card title</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                         additional content. This content is a little bit longer.</p>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer border-secondary">
                     <button class="btn btn-secondary btn-lg btn-block">Ver produto</button>
                 </div>
             </div>
@@ -145,7 +145,7 @@
     </div>
     <div class="col-8 mx-3">
         <div id="Carousel-clientes" class="justify-content-around owl-carousel owl-theme">
-            <div class="card h-100 item" style="width: 22rem;">
+            <div class="card h-100 item" style="width: 21.5rem;">
                 <img class="img-cliente align-self-center" src="{{ asset('images/person_3.jpg') }}" class="card-img-top"
                     alt="...">
                 <div class="card-body">
@@ -155,34 +155,34 @@
                     <p class="card-text">Edgar A.P.</p>
                 </div>
             </div>
-            <div class="card h-100 item" style="width: 22rem;">
+            <div class="card h-100 item" style="width: 21.5rem;">
                 <img class="img-cliente align-self-center" src="{{ asset('images/person_3.jpg') }}" class="card-img-top"
                     alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
-                    <p class="card-text">Edgar A.P.</p>
+                    <p class="card-text">Pedro A.P.</p>
                 </div>
             </div>
-            <div class="card h-100 item" style="width: 22rem;">
+            <div class="card h-100 item" style="width: 21.5rem;">
                 <img class="img-cliente align-self-center" src="{{ asset('images/person_3.jpg') }}" class="card-img-top"
                     alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
-                    <p class="card-text">Edgar A.P.</p>
+                    <p class="card-text">Bruno A.P.</p>
                 </div>
             </div>
-            <div class="card h-100 item" style="width: 22rem;">
+            <div class="card h-100 item" style="width: 21.5rem;">
                 <img class="img-cliente align-self-center" src="{{ asset('images/person_3.jpg') }}" class="card-img-top"
                     alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
-                    <p class="card-text">Edgar A.P.</p>
+                    <p class="card-text">Luiz A.P.</p>
                 </div>
             </div>
         </div>
@@ -195,49 +195,94 @@
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
+
+    {{-- <div class=" bd-example-modal-lg"> --}}
+
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content container">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalRequestLabel">Informações</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="#">
 
-                    <div class="form-group row justify-content-around">
-                        <label for="solicitacao">Selecione o que procura:</label>
+            @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+                @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+                @endforeach
+            </div>
+            @endif
+
+            <div class="modal-body">
+                <form method="post" action="{{route ('solicitacao.store')}}">
+                    {{ csrf_field() }}
+                    <div class="form-group row pt-4">
+                        <label class="px-2" for="solicitacao">Selecione o que procura:</label>
                         <select class="form-control col-3" name="solicitacao" required>
-                            <option>Quero Comprar</option>
-                            <option>Quero Vender</option>
+                            <option value="comprar">Quero Comprar</option>
+                            <option value="vender">Quero Vender</option>
                         </select>
-                        <label for="tipo">Tipo de Imovél:</label>
-                        <select class="form-control col-2" name="tipo" required>
+                        <label class="px-2" for="tipoVC">Tipo de Imovél:</label>
+                        <select class="form-control col-3" name="tipoVC" required>
                             <option>Apartamento</option>
                             <option>Casa</option>
                             <option>Kitnet</option>
                         </select>
                     </div>
 
-                    <div class="form-group row justify-content-around">
-                        <label for="logradouroEndereco">Endereço:</label>
-                        <input type="text" class="form-control col-10" required name="logradouroEndereco">
+                    <div class="modal-header my-2">
+                        <h5 class="modal-title">Onde?</h5>
                     </div>
 
-                    <div class="form-group row justify-content-around">
+                    <div class="form-group row pt-4">
+                        <label class="px-1" for="logradouroEndereco">Endereço:</label>
+                        <input type="text" class="form-control col-10" required name="logradouroEnderecoVC">
+                    </div>
 
-                        <label for="numero">Número</label>
-                        <input type="number" class="form-control col-2" required name="numeroEndereco">
+                    <div class="form-group row">
 
-                        <label for="bairroEndereco">Bairro</label>
-                        <input type="text" class="form-control col-3" required name="bairroEndereco">
+                        <label class="px-2" for="numero">Número</label>
+                        <input type="number" class="form-control col-2" required name="numeroEnderecoVC">
 
-                        <label for="cidadeEndereco">Cidade</label>
-                        <input type="text" class="form-control col-3" required name="cidadeEndereco">
+                        <label class="px-2" for="bairroEndereco">Bairro</label>
+                        <input type="text" class="form-control col-3" required name="bairroEnderecoVC">
+
+                        <label class="px-2" for="cidadeEndereco">Cidade</label>
+                        <input type="text" class="form-control col-3" required name="cidadeEnderecoVC">
 
                     </div>
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+
+                    <div class="modal-header my-2">
+                        <h5 class="modal-title">Como?</h5>
+                    </div>
+
+                    <div class="form-group row pt-4">
+                        <label class="px-2" for="qtdQuartos">Quartos:</label>
+                        <select class="form-control col-1" name="qtdQuartos" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label class="px-2" for="ValorVC">Valor:</label>
+                        <input type="text" class="form-control col-3" required name="valorVC">
+
+                    </div>
+
+
+
+
+                    <div class="d-flex justify-content-center py-4">
+                        <button type="submit" class="btn btn-secondary w-40">Solicitar</button>
+                    </div>
                 </form>
             </div>
         </div>

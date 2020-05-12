@@ -286,7 +286,7 @@ div .hamb {
 .hamb {
   background-color: ;
 }
-.nav {
+.nav1 {
   display: none;
 }
 .change {
@@ -367,5 +367,8 @@ div .hamb {
 }
 
 .text-black{
+  color: black;
+}
+.text-blackImp{
   color: black!important;
 }

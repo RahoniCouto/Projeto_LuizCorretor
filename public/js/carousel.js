@@ -34,8 +34,8 @@ $(document).ready(function ($) {
         $('#Carousel-clientes').owlCarousel({
             rtl:true,
             loop: true,
-            items: 1,
-            margin: 15,
+            items: 2,
+            margin: 10,
             stagePadding: 0,
             nav: false,
             responsive: {

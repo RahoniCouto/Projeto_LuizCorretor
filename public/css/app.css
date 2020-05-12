@@ -714,6 +714,8 @@ pre code {
     position: relative;
     width: 100%;
     min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .col {
@@ -4077,7 +4079,7 @@ input[type=submit].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #3490dc
+    background-color: #1b212c;
 }
 
 .nav-fill .nav-item {

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('require-admin');
+    }
+
     protected function validarCliente($request) {
         $validator=Validator::make($request->all(), [ 
                 "nome"=> "required",
