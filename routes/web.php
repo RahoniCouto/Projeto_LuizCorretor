@@ -33,6 +33,8 @@ Route::resource('clientes', 'ClienteController');
 Route::get('/clientes/remover/{id}', 'ClienteController@remover')->name('clientes.remover');
 
 Route::resource('solicitacao', 'solicitacaoController');
+
+Route::get('/solicitacao/remover/{id}', 'solicitacaoController@remover')->name('solicitacao.remover');
 /*
 |--------------------------------------------------------------------------
 | Routes Cliente

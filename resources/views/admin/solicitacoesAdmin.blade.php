@@ -5,9 +5,9 @@
 @section('content')
     <div class="container">
         <div class="mb-5">
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin">Home</a>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item border border-secondary">
+                    <a class="nav-link text-black" href="/admin">Home</a>
                 </li>
                 <li class="nav-item dropdown border border-secondary">
                     <a class="nav-link text-black dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -34,8 +34,8 @@
                         aria-haspopup="true" aria-expanded="false">Solicitações</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{route('solicitacao.index')}}">Solicitações</a>
-                        <a class="dropdown-item" href="#">Vendas</a>
-                        <a class="dropdown-item" href="#">Compras</a>
+                        <a class="dropdown-item" href="{{route('solicitacao.index', 'solicitacao=vender')}}">Vendas</a>
+                        <a class="dropdown-item" href="{{route('solicitacao.index', 'solicitacao=comprar')}}">Compras</a>
                     </div>
                 </li>
                 <li class="nav-item border border-secondary">
@@ -65,6 +65,7 @@
                         <thead>
                             <tr>
                                 <th>Solicitação</th>
+                                <th>Tipo</th>
                                 <th>Endereço</th>
                                 <th>Cidade</th>
                                 <th>Valor</th>
@@ -74,15 +75,16 @@
                         <tbody>
                             @foreach($solicitacoes as $solicitacao)
                             <tr>
+                                <td>{{$solicitacao->solicitacao}}</td>
                                 <td>{{$solicitacao->tipoVC}}</td>
                                 <td>{{$solicitacao->logradouroEnderecoVC}}</td>
                                 <td>{{$solicitacao->cidadeEnderecoVC}}</td>
-                                <td>R${{number_format($solicitacao->ValorVC, 2, ',', '.')}}</td>
+                                <td>R${{number_format($solicitacao->valorVC, 2, ',', '.')}}</td>
                                 
                                 <td>
-                                    <a href="{{route('imoveis.edit', $solicitacao->id)}}"><i class="fas fa-pen"></i></a>
-                                    <a href="{{route('imoveis.remover', $solicitacao->id)}}"><i class="fas fa-trash-alt"></i></a>
-                                    <a href="{{route('imoveis.show', $solicitacao->id)}}"><i class="fas fa-search-plus"></i></a>
+                                    {{-- <a href="{{route('imoveis.edit', $solicitacao->id)}}"><i class="fas fa-pen"></i></a> --}}
+                                    <a href="{{route('solicitacao.remover', $solicitacao->id)}}"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{route('solicitacao.show', $solicitacao->id)}}"><i class="fas fa-search-plus"></i></a>
                                 </td>
                             </tr>
                             @endforeach

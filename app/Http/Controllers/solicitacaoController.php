@@ -36,7 +36,7 @@ class solicitacaoController extends Controller
         $qtd = $request['qtd'] ?: 15;
         $page = $request['page'] ?: 1;
         $buscar = $request['buscar'];
-        $tipo = $request['tipo'];
+        $solicitacao = $request['solicitacao'];
 
         Paginator::currentPageResolver(function () use ($page) {
                 return $page;
@@ -45,8 +45,8 @@ class solicitacaoController extends Controller
         if($buscar){
             $solicitacoes=DB::table('solicitacoes')->where('cidadeEnderecoVC', '=', $buscar)->paginate($qtd);
         }else{
-            if($tipo){
-                $solicitacoes=DB::table('solicitacoes')->where('tipoVC', '=', $tipo)->paginate($qtd);
+            if($solicitacao){
+                $solicitacoes=DB::table('solicitacoes')->where('solicitacao', '=', $solicitacao)->paginate($qtd);
             }else{
                 $solicitacoes=DB::table('solicitacoes')->paginate($qtd);
             }           
@@ -82,8 +82,7 @@ class solicitacaoController extends Controller
         $dados = $request->all();
         Solicitacao::create($dados);
 
-        return view()->route('solicitacao.index');
-
+        return redirect()->route('solicitacao.index');
     }
 
     /**
@@ -96,7 +95,7 @@ class solicitacaoController extends Controller
     {
         $solicitacao=solicitacao::find($id);
 
-        return view('admin.solicitacao', compact('solicitacao'));
+        return view('admin.solicitacaoAdmin', compact('solicitacao'));
     }
 
     /**
@@ -107,7 +106,7 @@ class solicitacaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -130,6 +129,13 @@ class solicitacaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        solicitacao::find($id)->delete();
+
+        return redirect()->route('solicitacao.index');
+    }
+
+    public function remover($id) {
+        $solicitacao=solicitacao::find($id);
+        return view('admin.removeSolicitacao', compact('solicitacao'));
     }
 }

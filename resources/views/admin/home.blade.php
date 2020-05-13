@@ -5,9 +5,9 @@
 @section('content')
 <div class="container">
     <div class="mb-5">
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a class="nav-link active" href="/admin">Home</a>
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item border border-secondary">
+                <a class="nav-link text-black active" href="/admin">Home</a>
             </li>
             <li class="nav-item dropdown border border-secondary">
                 <a class="nav-link text-black dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -34,8 +34,8 @@
                     aria-haspopup="true" aria-expanded="false">Solicitações</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('solicitacao.index')}}">Solicitações</a>
-                    <a class="dropdown-item" href="#">Vendas</a>
-                    <a class="dropdown-item" href="#">Compras</a>
+                    <a class="dropdown-item" href="{{route('solicitacao.index', 'solicitacao=vender')}}">Vendas</a>
+                    <a class="dropdown-item" href="{{route('solicitacao.index', 'solicitacao=comprar')}}">Compras</a>
                 </div>
             </li>
             <li class="nav-item border border-secondary">
