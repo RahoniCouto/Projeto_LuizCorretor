@@ -22,7 +22,7 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/admin', 'admController@admin')->name('admin');  
+Route::get('/admin',  'admController@admin')->name('admin');  
 
 Route::resource('imoveis', 'ImovelController');
 

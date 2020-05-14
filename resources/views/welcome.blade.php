@@ -201,92 +201,179 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content container">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalRequestLabel">Informações</h5>
+                <h5 class="modal-title" id="modalRequestLabel">O que você procura?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
-            @if($errors->any())
-            <div class="alert alert-danger" role="alert">
-                @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-                @endforeach
-            </div>
-            @endif
-
             <div class="modal-body">
-                <form method="post" action="{{route ('solicitacao.store')}}">
-                    {{ csrf_field() }}
-                    <div class="form-group row pt-4">
-                        <label class="px-2" for="solicitacao">Selecione o que procura:</label>
-                        <select class="form-control col-3" name="solicitacao" required>
-                            <option value="comprar">Quero Comprar</option>
-                            <option value="vender">Quero Vender</option>
-                        </select>
-                        <label class="px-2" for="tipoVC">Tipo de Imovél:</label>
-                        <select class="form-control col-3" name="tipoVC" required>
-                            <option>Apartamento</option>
-                            <option>Casa</option>
-                            <option>Kitnet</option>
-                        </select>
+                <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link text-black active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">Quero Comprar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="false">Quero Vender</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="card-body">
+                            @if($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                @foreach ($errors->all() as $error)
+                                {{ $error }}<br>
+                                @endforeach
+                            </div>
+                            @endif
+                            <form method="post" action="{{route ('solicitacao.store')}}">
+                                    {{ csrf_field() }}
+                                    <div class="form-group row pt-4">
+                                        <label class="px-2" for="tipoVC">Tipo de Imovél:</label>
+                                        <select class="form-control col-3" name="tipoVC" required>
+                                            <option>Apartamento</option>
+                                            <option>Casa</option>
+                                            <option>Kitnet</option>
+                                        </select>
+                                    </div>
+                
+                                    <div class="modal-header my-2">
+                                        <h5 class="modal-title">Onde?</h5>
+                                    </div>
+                
+                                    <div class="form-group row">
+                
+                                        <label class="px-2" for="bairroEndereco">Bairro</label>
+                                        <input type="text" class="form-control col-3" required name="bairroEnderecoVC">
+                
+                                        <label class="px-2" for="cidadeEndereco">Cidade</label>
+                                        <input type="text" class="form-control col-3" required name="cidadeEnderecoVC">
+                
+                                    </div>
+                
+                
+                                    <div class="modal-header my-2">
+                                        <h5 class="modal-title">Como?</h5>
+                                    </div>
+                
+                                    <div class="form-group row pt-4">
+                                        <label class="px-2" for="qtdQuartos">Quartos:</label>
+                                        <select class="form-control col-1" name="qtdQuartos" required>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                
+                                    <div class="form-group row">
+                
+                                        <label class="px-2" for="ValorVC">Valor Minimo:</label>
+                                        <input type="text" class="form-control col-3" required name="valorMin">
+
+                                        <label class="px-2" for="ValorVC">Valor Maximo:</label>
+                                        <input type="text" class="form-control col-3" required name="valorMax">
+                
+                                    </div>
+                
+                                    <div class="d-flex justify-content-center py-4">
+                                        <button type="submit" class="btn btn-secondary px-5">Enviar</button>
+                                    </div>
+                                </form>
+                        </div>
                     </div>
-
-                    <div class="modal-header my-2">
-                        <h5 class="modal-title">Onde?</h5>
+                    
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card-body">
+                            <form method="post" action="{{route ('imoveis.store')}}">
+                                {{ csrf_field() }}
+                                <h4>Dados do imóvel</h4>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="descricao">Nome do Empreendimento</label>
+                                    <input type="text" class="form-control" name="nomeEmp" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="descricao">Descrição</label>
+                                    <textarea type="text" class="form-control" name="descricao" required rows="4"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="preco">Preço</label>
+                                            <input type="text" class="form-control" name="preco" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="qtdQuartos">Quantidade de Quartos</label>
+                                            <input type="number" class="form-control" required name="qtdQuartos">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="tipo">Tipo do imóvel</label>
+                                            <select class="form-control" name="tipo" required>
+                                                <option>Apartamento</option>
+                                                <option>Casa</option>
+                                                <option>Kitnet</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4>Endereço</h4>
+                                <hr>
+                
+                                <div class="form-group">
+                                    <label for="logradouroEndereco">Logradouro</label>
+                                    <input type="text" class="form-control" required name="logradouroEndereco">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="bairroEndereco">Bairro</label>
+                                            <input type="text" class="form-control" required name="bairroEndereco">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="numero">Número</label>
+                                            <input type="number" class="form-control" required
+                                                name="numeroEndereco">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cidadeEndereco">Cidade</label>
+                                            <input type="text" class="form-control" required name="cidadeEndereco">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cepEndereco">CEP</label>
+                                            <input type="text" class="form-control" required name="cepEndereco">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center py-4">
+                                    <button type="submit" class="btn btn-secondary px-5">Cadastrar</button>
+                                </div>
+                            </form>  
+                        </div>
                     </div>
-
-                    <div class="form-group row pt-4">
-                        <label class="px-1" for="logradouroEndereco">Endereço:</label>
-                        <input type="text" class="form-control col-10" required name="logradouroEnderecoVC">
-                    </div>
-
-                    <div class="form-group row">
-
-                        <label class="px-2" for="numero">Número</label>
-                        <input type="number" class="form-control col-2" required name="numeroEnderecoVC">
-
-                        <label class="px-2" for="bairroEndereco">Bairro</label>
-                        <input type="text" class="form-control col-3" required name="bairroEnderecoVC">
-
-                        <label class="px-2" for="cidadeEndereco">Cidade</label>
-                        <input type="text" class="form-control col-3" required name="cidadeEnderecoVC">
-
-                    </div>
-
-
-                    <div class="modal-header my-2">
-                        <h5 class="modal-title">Como?</h5>
-                    </div>
-
-                    <div class="form-group row pt-4">
-                        <label class="px-2" for="qtdQuartos">Quartos:</label>
-                        <select class="form-control col-1" name="qtdQuartos" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group row">
-
-                        <label class="px-2" for="ValorVC">Valor:</label>
-                        <input type="text" class="form-control col-3" required name="valorVC">
-
-                    </div>
-
-
-
-
-                    <div class="d-flex justify-content-center py-4">
-                        <button type="submit" class="btn btn-secondary w-40">Solicitar</button>
-                    </div>
-                </form>
+                </div>
+                
             </div>
         </div>
     </div>
 </div>
 
 @endsection
+
+

@@ -30,13 +30,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown border border-secondary">
-                    <a class="nav-link text-black dropdown-toggle active" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">Solicitações</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{route('solicitacao.index')}}">Solicitações</a>
-                        <a class="dropdown-item" href="{{route('solicitacao.index', 'solicitacao=vender')}}">Vendas</a>
-                        <a class="dropdown-item" href="{{route('solicitacao.index', 'solicitacao=comprar')}}">Compras</a>
-                    </div>
+                    <a class="dropdown-item" href="{{route('solicitacao.index')}}">Solicitações</a>
                 </li>
                 <li class="nav-item border border-secondary">
                     <a class="nav-link text-black" href="{{route('imoveis.create')}}">Cadastrar Produto</a>
@@ -64,7 +58,6 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Solicitação</th>
                                 <th>Tipo</th>
                                 <th>Endereço</th>
                                 <th>Cidade</th>
@@ -75,12 +68,11 @@
                         <tbody>
                             @foreach($solicitacoes as $solicitacao)
                             <tr>
-                                <td>{{$solicitacao->solicitacao}}</td>
                                 <td>{{$solicitacao->tipoVC}}</td>
-                                <td>{{$solicitacao->logradouroEnderecoVC}}</td>
+                                <td>{{$solicitacao->bairroEnderecoVC}}</td>
                                 <td>{{$solicitacao->cidadeEnderecoVC}}</td>
-                                <td>R${{number_format($solicitacao->valorVC, 2, ',', '.')}}</td>
-                                
+                                <td>R${{number_format($solicitacao->valorMin, 2, ',', '.')}}</td>
+                                <td>R${{number_format($solicitacao->valorMax, 2, ',', '.')}}</td>
                                 <td>
                                     {{-- <a href="{{route('imoveis.edit', $solicitacao->id)}}"><i class="fas fa-pen"></i></a> --}}
                                     <a href="{{route('solicitacao.remover', $solicitacao->id)}}"><i class="fas fa-trash-alt"></i></a>
