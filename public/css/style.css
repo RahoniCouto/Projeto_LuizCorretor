@@ -372,3 +372,7 @@ div .hamb {
 .text-blackImp{
   color: black!important;
 }
+
+.logoSize {
+  max-width: 30px;
+}

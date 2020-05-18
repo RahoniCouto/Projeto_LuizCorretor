@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImovelsTable extends Migration
+class CreateImoveisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,6 @@ class CreateImovelsTable extends Migration
     {
         Schema::create('imoveis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nomeEmp');
             $table->string('descricao');
             $table->string('logradouroEndereco');
             $table->string('bairroEndereco');

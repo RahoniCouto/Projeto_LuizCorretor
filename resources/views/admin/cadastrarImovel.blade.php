@@ -60,10 +60,6 @@
                 <h4>Dados do imóvel</h4>
                 <hr>
                 <div class="form-group">
-                    <label for="descricao">Nome do Empreendimento</label>
-                    <input type="text" class="form-control" name="nomeEmp" required>
-                </div>
-                <div class="form-group">
                     <label for="descricao">Descrição</label>
                     <textarea type="text" class="form-control" name="descricao" required rows="4"></textarea>
                 </div>

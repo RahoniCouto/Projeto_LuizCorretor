@@ -26,6 +26,34 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="nomeCliente" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="nomeCliente" type="text" class="form-control @error('nomeCliente') is-invalid @enderror" name="nomeCliente" value="{{ old('nomeCliente') }}" required autocomplete="nomeCliente" autofocus>
+
+                                @error('nomeCliente')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="sobrenomeCliente" class="col-md-4 col-form-label text-md-right">{{ __('Sobrenome') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="sobrenomeCliente" type="text" class="form-control @error('sobrenomeCliente') is-invalid @enderror" name="sobrenomeCliente" value="{{ old('sobrenomeCliente') }}" required autocomplete="sobrenomeCliente" autofocus>
+
+                                @error('sobrenomeCliente')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">

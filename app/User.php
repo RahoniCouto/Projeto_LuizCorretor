@@ -38,4 +38,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function solicitacoes(){
+        return $this->hasMany('App\solicitacao', 'solicitacao_id');
+    }
+
+    public function imoveis(){
+        return $this->hasMany('App\Imovel', 'imovel_id');
+    }
 }
+

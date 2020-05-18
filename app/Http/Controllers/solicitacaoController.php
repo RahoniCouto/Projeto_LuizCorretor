@@ -8,20 +8,19 @@ use \App\Imovel;
 use \App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class solicitacaoController extends Controller
 {
     protected function validarSolicitacao($request){
         $validator = Validator::make($request->all(), [
-            "solicitacao" => "required",
             "tipoVC" => "required",
-            "logradouroEnderecoVC"=> "required",
-            "numeroEnderecoVC" => "required | numeric",
             "bairroEnderecoVC" => "required",
             "cidadeEnderecoVC" => "required",
             "qtdQuartos" => "required | numeric ",
-            "valorVC" => "required | numeric",
+            "valorMin" => "required | numeric",
+            "valorMax" => "required | numeric",
             
         ]);
         return $validator;
@@ -36,7 +35,7 @@ class solicitacaoController extends Controller
         $qtd = $request['qtd'] ?: 15;
         $page = $request['page'] ?: 1;
         $buscar = $request['buscar'];
-        $solicitacao = $request['solicitacao'];
+        $tipoVC = $request['tipoVC'];
 
         Paginator::currentPageResolver(function () use ($page) {
                 return $page;
@@ -45,8 +44,8 @@ class solicitacaoController extends Controller
         if($buscar){
             $solicitacoes=DB::table('solicitacoes')->where('cidadeEnderecoVC', '=', $buscar)->paginate($qtd);
         }else{
-            if($solicitacao){
-                $solicitacoes=DB::table('solicitacoes')->where('solicitacao', '=', $solicitacao)->paginate($qtd);
+            if($tipoVC){
+                $solicitacoes=DB::table('solicitacoes')->where('tipoVC', '=', $tipoVC)->paginate($qtd);
             }else{
                 $solicitacoes=DB::table('solicitacoes')->paginate($qtd);
             }           
@@ -79,8 +78,20 @@ class solicitacaoController extends Controller
             return redirect()->back()->withErrors($validator->errors());
         }
 
-        $dados = $request->all();
-        Solicitacao::create($dados);
+        $solicitacao = Solicitacao::create([
+
+            "solicitacao_id" => Auth::id(),
+            "tipoVC" => $request->input('tipoVC'),
+            "bairroEnderecoVC" => $request->input('bairroEnderecoVC'),
+            "cidadeEnderecoVC" => $request->input('cidadeEnderecoVC'),
+            "qtdQuartos" => $request->input('qtdQuartos'),
+            "valorMax" => $request->input('valorMax'),
+            "valorMin" => $request->input('valorMin')
+        ]);
+
+
+        // salvando registro no banco de dados
+        $solicitacao->save();
 
         return redirect()->route('solicitacao.index');
     }
@@ -95,7 +106,7 @@ class solicitacaoController extends Controller
     {
         $solicitacao=solicitacao::find($id);
 
-        return view('admin.solicitacaoAdmin', compact('solicitacao'));
+        return view('admin.solicitacao', compact('solicitacao'));
     }
 
     /**

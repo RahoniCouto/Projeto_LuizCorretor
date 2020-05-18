@@ -8,6 +8,7 @@ use \App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
@@ -22,15 +23,15 @@ class ClienteController extends Controller
                 "nomeCliente"=> "required",
                 "sobrenomeCliente"=> "required",
                 "email"=> "required",
-                "cpfCliente"=> "required",
-                "rgCliente"=> "required",
-                "telCliente" => "required",
+                // "cpfCliente"=> "required",
+                // "rgCliente"=> "required",
+                // "telCliente" => "required",
                 "celCliente"=> "required",
-                "logradouroEndereco"=> "required",
-                "bairroEndereco"=> "required",
-                "numeroEndereco"=> "required | numeric",
-                "cepEndereco"=> "required",
-                "cidadeEndereco"=> "required"
+                // "logradouroEndereco"=> "required",
+                // "bairroEndereco"=> "required",
+                // "numeroEndereco"=> "required | numeric",
+                // "cepEndereco"=> "required",
+                // "cidadeEndereco"=> "required"
                 
                 ]);
         return $validator;
@@ -82,14 +83,35 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $validator=$this->validarImovel($request);
+        $validator=$this->validarCliente($request);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors());
         }
 
-        $dados=$request->all();
-        user::create($dados);
+        $user = User::create([
+
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request['password']),
+            'status' => $request->input('status'),
+            'nomeCliente' => $request->input('nomeCliente'),
+            'sobrenomeCliente' => $request->input('sobrenomeCliente'),
+            'cpfCliente' => $request->input('cpfCliente'),
+            'rgCliente' => $request->input('rgCliente'),
+            'telCliente' => $request->input('telCliente'),
+            'celCliente' => $request->input('celCliente'),
+            'logradouroEndereco' => $request->input('logradouroEndereco'),
+            'bairroEndereco' => $request->input('bairroEndereco'),
+            'numeroEndereco' => $request->input('numeroEndereco'),
+            'cepEndereco' => $request->input('cepEndereco'),
+            'cidadeEndereco' => $request->input('cidadeEndereco'),
+            
+        ]);
+
+
+        // salvando registro no banco de dados
+        $user->save();
 
         return redirect()->route('clientes.index');
     }

@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logoSize" src="{{asset('/imagens/Logo.png')}}" alt="">
+                    <img class="logoSize" src="{{asset('/images/Logo.png')}}" alt="">
                     Painel Administrativo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"

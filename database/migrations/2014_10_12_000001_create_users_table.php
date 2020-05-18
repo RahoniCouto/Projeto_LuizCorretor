@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('status', ['contatar', 'vendido', 'cancelado'])->default('contatar');
-            
-
             $table->string('nomeCliente')->nullable();
             $table->string('sobrenomeCliente')->nullable();
             $table->string('cpfCliente')->nullable();
@@ -33,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->integer('numeroEndereco')->nullable();
             $table->string('cepEndereco')->nullable();
             $table->string('cidadeEndereco')->nullable();
-
+            $table->integer('admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

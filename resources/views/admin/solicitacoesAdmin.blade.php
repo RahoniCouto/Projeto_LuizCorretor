@@ -61,7 +61,8 @@
                                 <th>Tipo</th>
                                 <th>Endereço</th>
                                 <th>Cidade</th>
-                                <th>Valor</th>
+                                <th>Valor Minimo</th>
+                                <th>Valor Maximo</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -74,7 +75,6 @@
                                 <td>R${{number_format($solicitacao->valorMin, 2, ',', '.')}}</td>
                                 <td>R${{number_format($solicitacao->valorMax, 2, ',', '.')}}</td>
                                 <td>
-                                    {{-- <a href="{{route('imoveis.edit', $solicitacao->id)}}"><i class="fas fa-pen"></i></a> --}}
                                     <a href="{{route('solicitacao.remover', $solicitacao->id)}}"><i class="fas fa-trash-alt"></i></a>
                                     <a href="{{route('solicitacao.show', $solicitacao->id)}}"><i class="fas fa-search-plus"></i></a>
                                 </td>

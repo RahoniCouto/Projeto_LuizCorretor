@@ -3,6 +3,7 @@
 @section('title', 'Editar Produto')
 
 @section('content')
+
 <div class="container">
     <div class="mb-5">
         <ul class="nav nav-pills nav-fill">
@@ -88,7 +89,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="rgCliente">RG</label>
-                            <input type="text" class="form-control" required name="rgCliente" value="{{$cliente->rgCliente}}">
+                            <input type="text" class="form-control" name="rgCliente" value="{{$cliente->rgCliente}}">
                         </div>
                     </div>
                 </div>
@@ -128,19 +129,19 @@
 
                 <div class="form-group">
                     <label for="logradouroEndereco">Logradouro</label>
-                    <input type="text" class="form-control" required name="logradouroEndereco" value="{{$cliente->logradouroEndereco}}">
+                    <input type="text" class="form-control" name="logradouroEndereco" value="{{$cliente->logradouroEndereco}}">
                 </div>
                 <div class="row">
                     <div class="col-md-10">
                         <div class="form-group">
                             <label for="bairroEndereco">Bairro</label>
-                            <input type="text" class="form-control" required name="bairroEndereco" value="{{$cliente->bairroEndereco}}">
+                            <input type="text" class="form-control" name="bairroEndereco" value="{{$cliente->bairroEndereco}}">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="numero">Número</label>
-                            <input type="number" class="form-control" required
+                            <input type="number" class="form-control"
                                 name="numeroEndereco" value="{{$cliente->numeroEndereco}}">
                         </div>
                     </div>
@@ -149,13 +150,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="cidadeEndereco">Cidade</label>
-                            <input type="text" class="form-control" required name="cidadeEndereco" value="{{$cliente->cidadeEndereco}}">
+                            <input type="text" class="form-control" name="cidadeEndereco" value="{{$cliente->cidadeEndereco}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="cepEndereco">CEP</label>
-                            <input type="text" class="form-control" required name="cepEndereco" value="{{$cliente->cepEndereco}}">
+                            <input type="text" class="form-control" name="cepEndereco" value="{{$cliente->cepEndereco}}">
                         </div>
                     </div>
                 </div>
